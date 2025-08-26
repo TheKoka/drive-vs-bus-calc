@@ -1,0 +1,58 @@
+body {
+    background-color: aquamarine;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(0, 100, 255);
+
+}
+
+h3 {
+    text-align: center;
+    color: rgb(0, 100, 255);
+}
+
+.calculator,
+.inputs {
+    border-radius: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: beige;
+    width: 400px;
+    height: 500px;
+    margin: auto;
+    margin-top: 100px;
+
+}
+
+.calculator {
+    border: solid aqua 2px;
+
+}
+
+#days-of-class {
+    margin: auto;
+    margin-top: 0;
+}
+
+#desired-grade {
+
+    margin: auto;
+    margin-top: 0;
+
+
+}
+
+#days-of-class {
+    margin: auto;
+    margin-top: 0;
+}
+
+button {
+    max-width: fit-content;
+    margin: auto;
+    margin-bottom: 10px;
+}

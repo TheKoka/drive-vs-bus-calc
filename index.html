@@ -3,34 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendence Calculator</title>
+    <title>Drive vs Bus Calculator</title>
     <link rel="stylesheet" href="style.css">
-    
 </head>
 <body>
-    <h1>Attendence Calculator</h1>
-    <header>
-        <h3>This calculator determines how many days of 
-            class you can skip by the attendance grade you want</h3>
-    </header>
-    <div class="calculator">
-        <div class="inputs">
-        <label for="days-of-class">days of class</label>
-        <input type="week" id="days-of-class" >
-        <br>
-        <label for="desired-grade">desired grade</label>
-        <input type="week" id="desired-grade" >
-        <br>
-        <label for="days-of-class">days of class</label>
-        <input type="week" id="days-of-class" >
-        <br>
-        <button type="submit">Submit</button>
+    <script src="script.js"></script>
+    <div class="container">
+        <h1>🚗 Drive vs 🚌 Bus Calculator</h1>
+        
+        <div class="calculator">
+            <div class="sections">
+                <!-- Driving Section -->
+                <div class="section driving">
+                    <h2>🚗 Driving Costs</h2>
+                    
+                    <div class="input-group">
+                        <label for="distance">Distance (miles)</label>
+                        <input type="number" id="distance" placeholder="e.g., 25" step="0.1" min="0">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="mpg">Vehicle MPG</label>
+                        <input type="number" id="mpg" placeholder="e.g., 28" step="0.1" min="1">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="gas-price">Gas price per gallon ($)</label>
+                        <input type="number" id="gas-price" placeholder="e.g., 3.50" step="0.01" min="0">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="parking">Parking cost ($)</label>
+                        <input type="number" id="parking" placeholder="e.g., 10" step="0.01" min="0" value="0">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="tolls" class="optional">Tolls ($) - optional</label>
+                        <input type="number" id="tolls" placeholder="e.g., 5" step="0.01" min="0" value="0">
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="round-trip-drive">
+                        <label for="round-trip-drive">Round trip?</label>
+                    </div>
+                </div>
+                
+                <!-- Transit Section -->
+                <div class="section transit">
+                    <h2>🚌 Public Transit</h2>
+                    
+                    <div class="input-group">
+                        <label for="fare">Fare per person ($)</label>
+                        <input type="number" id="fare" placeholder="e.g., 2.50" step="0.01" min="0">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="people">Number of people</label>
+                        <input type="number" id="people" placeholder="e.g., 1" min="1" value="1">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="transfers" class="optional">Number of transfers - optional</label>
+                        <input type="number" id="transfers" placeholder="e.g., 1" min="0" value="0">
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="round-trip-transit">
+                        <label for="round-trip-transit">Round trip?</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="has-pass">
+                        <label for="has-pass">Using monthly/weekly pass?</label>
+                    </div>
+                    
+                    <div class="input-group" id="pass-group" style="display: none;">
+                        <label for="pass-cost">Pass cost ($)</label>
+                        <input type="number" id="pass-cost" placeholder="e.g., 75" step="0.01" min="0">
+                        <label for="pass-days" style="margin-top: 10px;">Days in pass period</label>
+                        <input type="number" id="pass-days" placeholder="e.g., 30" min="1">
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="calculate()">Calculate & Compare</button>
+            
+            <div class="results" id="results">
+                <div class="comparison">
+                    <div class="result-card" id="drive-card">
+                        <h3>🚗 Driving</h3>
+                        <div class="cost" id="drive-cost">$0.00</div>
+                        <div class="details">
+                            <div class="detail-row">
+                                <span>Fuel cost:</span>
+                                <span id="fuel-cost">$0.00</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Parking:</span>
+                                <span id="parking-cost">$0.00</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Tolls:</span>
+                                <span id="toll-cost">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-card" id="transit-card">
+                        <h3>🚌 Public Transit</h3>
+                        <div class="cost" id="transit-cost">$0.00</div>
+                        <div class="details">
+                            <div class="detail-row">
+                                <span>Base fare:</span>
+                                <span id="base-fare">$0.00</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>People:</span>
+                                <span id="people-count">1</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Trip type:</span>
+                                <span id="trip-type">One-way</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="savings" id="savings">
+                    <h3>💰 You save by choosing the cheaper option:</h3>
+                    <div class="savings-amount" id="savings-amount">$0.00</div>
+                    <p id="recommendation"></p>
+                </div>
+            </div>
         </div>
     </div>
-    <footer>
-
-    </footer>
-
 
 </body>
 </html>

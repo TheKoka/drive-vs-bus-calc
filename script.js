@@ -100,10 +100,10 @@ function calculate() {
 
 
         // Display results
-        document.getElementById('fuel-cost').textContent = `${(fuelCost * tripMultiplier * numDays).toFixed(2)}`;
-        document.getElementById('parking-result').textContent = `${parkingCost.toFixed(2)}`;
-        document.getElementById('toll-cost').textContent = `${(tolls * tripMultiplier * numDays).toFixed(2)}`;
-        document.getElementById('drive-cost').textContent = `${totalDriveCost.toFixed(2)} (for ${numDays} days)`;
+        document.getElementById('fuel-cost').textContent = `$${(fuelCost * tripMultiplier * numDays).toFixed(2)}`;
+        document.getElementById('parking-result').textContent = `$${parkingCost.toFixed(2)}`;
+        document.getElementById('toll-cost').textContent = `$${(tolls * tripMultiplier * numDays).toFixed(2)}`;
+        document.getElementById('drive-cost').textContent = `$${totalDriveCost.toFixed(2)} (for ${numDays} days)`;
 
         // Update transit display based on payment type
         if (monthlyPassRadio.checked) {

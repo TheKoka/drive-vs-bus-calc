@@ -7,10 +7,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    
     <div class="container">
         <h1>🚗 Drive vs 🚌 Bus Calculator</h1>
         
+        
         <div class="calculator">
+            
+            <!-- Period selection moved outside of sections -->
+            <div class="period-box">
+                <div class="input-group">
+                    <label>Period:</label>
+                    <input type="radio" name="period" id="semester" checked>
+                    <label for="semester">Semester</label>
+                    <input type="radio" name="period" id="year">
+                    <label for="year">Year</label>
+                </div>
+
+                <div class="input-group">
+                    <label for="days">Number of days</label>
+                    <input type="number" id="days" value="75" min="1">
+                </div>
+            </div>
+
+            <!-- Driving and Transit sections only -->
             <div class="sections">
                 <!-- Driving Section -->
                 <div class="section driving">
@@ -30,10 +51,17 @@
                         <label for="gas-price">Gas price per gallon ($)</label>
                         <input type="number" id="gas-price" placeholder="e.g., 3.50" step="0.01" min="0">
                     </div>
-                    
                     <div class="input-group">
-                        <label for="parking">Parking cost ($)</label>
-                        <input type="number" id="parking" placeholder="e.g., 10" step="0.01" min="0" value="0">
+                        <label>Parking Type:</label>
+                        <input type="radio" name="parking-type" id="daily-parking" checked>
+                        <label for="daily-parking">Daily Parking</label>
+                        <input type="radio" name="parking-type" id="parking-pass">
+                        <label for="parking-pass">Parking Pass</label>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="parking-cost" id="parking-label">Daily Parking Cost ($)</label>
+                        <input type="number" id="parking-cost" placeholder="e.g., 10" step="0.01" min="0" value="0">
                     </div>
                     
                     <div class="input-group">
@@ -52,35 +80,26 @@
                     <h2>🚌 Public Transit</h2>
                     
                     <div class="input-group">
-                        <label for="fare">Fare per person ($)</label>
+                        <label>Payment Type:</label>
+                        <input type="radio" name="payment-type" id="per-trip" checked>
+                        <label for="per-trip">Per Trip</label>
+                        <input type="radio" name="payment-type" id="monthly-pass">
+                        <label for="monthly-pass">Monthly Pass</label>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="fare" id="fare-label">Fare per trip ($)</label>
                         <input type="number" id="fare" placeholder="e.g., 2.50" step="0.01" min="0">
                     </div>
                     
-                    <div class="input-group">
-                        <label for="people">Number of people</label>
-                        <input type="number" id="people" placeholder="e.g., 1" min="1" value="1">
+                    <div class="input-group" id="pass-days-group" style="display: none;">
+                        <label for="pass-days">Days in pass period</label>
+                        <input type="number" id="pass-days" placeholder="e.g., 30" min="1" value="30">
                     </div>
                     
-                    <div class="input-group">
-                        <label for="transfers" class="optional">Number of transfers - optional</label>
-                        <input type="number" id="transfers" placeholder="e.g., 1" min="0" value="0">
-                    </div>
-                    
-                    <div class="checkbox-group">
+                    <div class="checkbox-group" id="transit-round-trip-group">
                         <input type="checkbox" id="round-trip-transit">
                         <label for="round-trip-transit">Round trip?</label>
-                    </div>
-                    
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="has-pass">
-                        <label for="has-pass">Using monthly/weekly pass?</label>
-                    </div>
-                    
-                    <div class="input-group" id="pass-group" style="display: none;">
-                        <label for="pass-cost">Pass cost ($)</label>
-                        <input type="number" id="pass-cost" placeholder="e.g., 75" step="0.01" min="0">
-                        <label for="pass-days" style="margin-top: 10px;">Days in pass period</label>
-                        <input type="number" id="pass-days" placeholder="e.g., 30" min="1">
                     </div>
                 </div>
             </div>
@@ -99,11 +118,14 @@
                             </div>
                             <div class="detail-row">
                                 <span>Parking:</span>
-                                <span id="parking-cost">$0.00</span>
+                                <span id="parking-result">$0.00</span>
                             </div>
                             <div class="detail-row">
                                 <span>Tolls:</span>
                                 <span id="toll-cost">$0.00</span>
+                            </div>
+                            <div class="disclaimer">
+                                <small>* Does not include insurance, maintenance, or repair costs</small>
                             </div>
                         </div>
                     </div>
@@ -116,14 +138,14 @@
                                 <span>Base fare:</span>
                                 <span id="base-fare">$0.00</span>
                             </div>
-                            <div class="detail-row">
-                                <span>People:</span>
-                                <span id="people-count">1</span>
+                            <div class="disclaimer passx" id="pass-info">
+                                <small>*Bus fair is the pass X</small>pass-days
                             </div>
                             <div class="detail-row">
                                 <span>Trip type:</span>
                                 <span id="trip-type">One-way</span>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

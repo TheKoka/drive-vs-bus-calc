@@ -31,6 +31,42 @@ h1 {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
+.period-box {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    border: 2px solid #e9ecef;
+    margin-bottom: 30px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.period-box .input-group {
+    display: inline-block;
+    margin: 10px 15px;
+}
+
+.period-box input[type="radio"] {
+    width: auto;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.period-box input[type="radio"]:first-of-type {
+    margin-left: 0;
+}
+
+.period-box label[for="semester"],
+.period-box label[for="year"] {
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
 .sections {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -104,6 +140,28 @@ input:focus {
 
 .checkbox-group input[type="checkbox"] {
     width: auto;
+}
+
+/* Radio button groups styling */
+.input-group input[type="radio"] {
+    width: auto;
+    display: inline-block;
+    margin-right: 5px;
+    margin-left: 15px;
+}
+
+.input-group input[type="radio"]:first-of-type {
+    margin-left: 0;
+}
+
+.input-group label[for="daily-parking"],
+.input-group label[for="parking-pass"],
+.input-group label[for="per-trip"],
+.input-group label[for="monthly-pass"] {
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 0;
+    font-weight: normal;
 }
 
 button {
@@ -189,6 +247,25 @@ button:hover {
 .detail-row:last-child {
     border-bottom: none;
     margin-bottom: 0;
+}
+
+.disclaimer {
+    margin-top: 15px;
+    padding-top: 10px;
+
+    text-align: center;
+}
+
+.passx {
+    margin-top: 1px;
+    padding-top: 0px;
+
+}
+
+.disclaimer small {
+    color: #6c757d;
+    font-style: italic;
+    font-size: 0.85rem;
 }
 
 .savings {
